@@ -3,7 +3,7 @@ export const UserService = {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve({ name: "Filip" });
-      }, 3000);
+      }, 1500);
     });
   },
   getFavoriteColor: async () => {
