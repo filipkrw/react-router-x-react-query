@@ -12,14 +12,14 @@ export const Contact: React.FC = () => {
   return (
     <div>
       hi {data.name}
-      <React.Suspense fallback={<p>Loading color...</p>}>
+      {/* <React.Suspense fallback={<p>Loading color...</p>}>
         <Await
           resolve={colorLoader(queryClient)()}
           errorElement={<p>Error loading color!</p>}
         >
           <Color />
         </Await>
-      </React.Suspense>
+      </React.Suspense> */}
     </div>
   );
 };

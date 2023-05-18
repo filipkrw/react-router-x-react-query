@@ -1,11 +1,12 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Navigate, RouterProvider, useParams } from "react-router";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { useMemo, useState } from "react";
+import { Navigate, RouterProvider, useMatches, useParams } from "react-router";
 import { createBrowserRouter } from "react-router-dom";
 import { Contact } from "./Contact/Contact";
 import { contactLoader } from "./Contact/useContact";
 import { Root } from "./Root";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { useMemo, useState } from "react";
+import { Test, testLoader } from "./Test/Test";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,11 @@ export const App: React.FC = () => {
             {
               path: "/about/:test?",
               element: <About />,
+            },
+            {
+              path: "/test",
+              element: <Test />,
+              loader: testLoader(queryClient, setIsLoading),
             },
           ],
         },

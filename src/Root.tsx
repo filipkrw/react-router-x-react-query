@@ -17,7 +17,7 @@ export const Root: React.FC = () => {
     <div>
       {isLoading ? <div>Loading...</div> : null}
       <Link to="/">Home</Link> | <Link to="/contact">Contact</Link> |{" "}
-      <Link to="/about">About</Link>
+      <Link to="/about">About</Link> | <Link to="/test">Test</Link>
       <br />
       <Outlet />
     </div>
