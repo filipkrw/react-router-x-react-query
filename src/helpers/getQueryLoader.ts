@@ -13,10 +13,11 @@ export function getQueryLoader<
       if (data) {
         return data;
       }
+
       setIsLoading?.(true);
-      const result = await queryClient.fetchQuery(queryKey, queryFn);
-      setIsLoading?.(false);
-      return result;
+      return queryClient
+        .fetchQuery(queryKey, queryFn)
+        .finally(() => setIsLoading?.(false));
     };
   };
 }
