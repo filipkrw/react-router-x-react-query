@@ -6,7 +6,7 @@ export function getQueryLoader<
 >(queryKey: TQueryKey, queryFn: QueryFunction<T, QueryKey>) {
   return (
     queryClient: QueryClient,
-    setIsLoading?: (isLoading: boolean) => void
+    setCurrentlyLoading?: (queryKey: QueryKey) => void
   ) => {
     return async () => {
       const data = queryClient.getQueryData<T>(queryKey);
@@ -14,10 +14,8 @@ export function getQueryLoader<
         return data;
       }
 
-      setIsLoading?.(true);
-      return queryClient
-        .fetchQuery(queryKey, queryFn)
-        .finally(() => setIsLoading?.(false));
+      setCurrentlyLoading?.(queryKey);
+      return queryClient.fetchQuery(queryKey, queryFn);
     };
   };
 }
